@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         stage('Test') {
-            agent {
+            agent any {
                     image 'python:3.8'
                     args '-u root:root'
             }
