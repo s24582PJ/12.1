@@ -1,7 +1,6 @@
 pipeline {
     agent any
-
-        stage('Test') {
+        stages('Test') {
             steps {
                 sh 'python3 -m unittest discover'
             }
