@@ -1,15 +1,11 @@
 pipeline {
     agent any
-    tools{
-        git 'Default'
-    }
     
-    
-    
-    post {
-        always {
-            echo "dziala zawsze"
-            junit '**/unittest.xml'
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'hello world'
+            }
         }
     }
 }
