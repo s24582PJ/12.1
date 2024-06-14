@@ -1,21 +1,25 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Test') {
-            agent any {
-                    image 'python:3.8'
-                    args '-u root:root'
-            }
             steps {
-                sh 'python3 -m unittest discover -s . -p "*.py"'
+                script {
+
+                    sh 'apt update && apt install -y python3'
+
+                    sh 'pip install -r requirements.txt'
+
+                    sh 'python3 -m unittest discover -s . -p "test_*.py"'
+                }
             }
         }
     }
-
+    
     post {
         always {
-            junit '**/test-results.xml'
+
+            junit '**/unittest.xml'
         }
     }
 }
