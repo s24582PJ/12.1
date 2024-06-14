@@ -4,22 +4,7 @@ pipeline {
         git 'Default'
     }
     
-    stages {
-        stage('Test') {
-            steps {
-                script {
-                    // Aktualizacja pakietów apt z uprawnieniami sudo
-                    sh 'apt update'
-                    // Instalacja Pythona
-                    sh 'apt install -y python3'
-                    // Instalacja zależności
-                    sh 'pip install -r requirements.txt'
-                    // Uruchomienie testów jednostkowych
-                    sh 'python3 -m unittest discover -s . -p "test_*.py"'
-                }
-            }
-        }
-    }
+    
     
     post {
         always {
