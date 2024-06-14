@@ -1,16 +1,17 @@
 pipeline {
     agent any
-        stages('Test') {
+
+    stages {
+        stage('Test') {
             steps {
-                sh 'python3 -m unittest discover'
+                sh 'python3 -m unittest discover -s . -p "*.py"'
             }
         }
-    
+    }
 
     post {
         always {
             junit 'test-results.xml'
         }
-        
     }
 }
