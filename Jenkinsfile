@@ -9,9 +9,9 @@ pipeline {
             steps {
                 script {
                     // Aktualizacja pakietów apt z uprawnieniami sudo
-                    sh 'sudo apt update'
+                    sh 'apt update'
                     // Instalacja Pythona
-                    sh 'sudo apt install -y python3'
+                    sh 'apt install -y python3'
                     // Instalacja zależności
                     sh 'pip install -r requirements.txt'
                     // Uruchomienie testów jednostkowych
