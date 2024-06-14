@@ -1,24 +1,22 @@
 pipeline {
-    agent any
-    tools{
-        git 'Default'
+    agent {
+        docker {
+            image 'python:3.8'
+            args '-u root:root'
+        }
     }
-    
+
     stages {
         stage('Test') {
             steps {
-                script {
-
-                    sh 'python -m unittest discover -s . -p "test_*.py"'
-                }
+                sh 'python3 -m unittest discover -s . -p "*.py"'
             }
         }
     }
-    
+
     post {
         always {
-            echo "dziala zawsze"
-            junit '**/unittest.xml'
+            junit '**/test-results.xml'
         }
     }
 }
